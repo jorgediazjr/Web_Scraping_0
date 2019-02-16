@@ -6,4 +6,4 @@ The purpose for this was just to get the number of words per chapter, and determ
 To view results open [bible.csv](bible.csv) file.
 
 
-[bible.txt](bible.txt) is a 2 column list of book chapter_count.
+[bible.txt](bible.txt) is a 2 column list of "book chapter_count."

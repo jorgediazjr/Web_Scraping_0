@@ -1,4 +1,4 @@
-# Bible Reading Time
+# Holy Bible Reading Time
 
 The purpose for this was just to get the number of words per chapter in the Holy Bible, and determine the reading time per chapter assuming the person reads 200 words a minute. (KJV Bible Version)
 

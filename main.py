@@ -88,7 +88,6 @@ def loop_through_chapters_of_the(bible):
     print(len(approx_reading_time))
     return num_of_words, approx_reading_time
 
-
 def write_to_file(df):
     df.to_csv("bible.csv", index=False) 
     new_df = df.groupby(df['Book'], sort=False)['# of words/chapter', 'Approx. reading time (mins)'].sum()

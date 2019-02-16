@@ -1,7 +1,7 @@
 Total reading time for the entire Holy Bible = 4066 minutes
 Total reading time for the entire Holy Bible = 68 hours
 Total reading time for the entire Holy Bible = 3 days
-Total reading time for the entire Holy Bible = 68 days if you read 1 hour/day
+Total reading time for the entire Holy Bible = 68 days if you read 1 hr/day
 Total reading time for the entire Holy Bible = 136 days if you read 30 mins/day
 Total reading time for the entire Holy Bible = 45 days if you read 90 mins/day
 Total reading time for the entire Holy Bible = 34 days if you read 2 hrs/day

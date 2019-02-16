@@ -51,7 +51,7 @@ def count_num_of_words(soup):
 
 
 def estimate_reading_time(words):
-    time_to_read = words / 250
+    time_to_read = words / 200
     time_to_read = str(time_to_read)
     minutes = int(time_to_read[0: time_to_read.find(".")])
     seconds = float(time_to_read[time_to_read.find("."):]) * 0.60 

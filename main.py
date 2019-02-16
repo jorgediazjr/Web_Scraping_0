@@ -171,6 +171,7 @@ def write_to_file(df):
        results in a 66 row 2 column csv file 
     '''
 
+
     df.to_csv("bible.csv", index=False) 
     new_df = df.groupby(df['Book'], sort=False)['# of words/chapter', 'Approx. reading time (mins)'].sum()
     new_df = new_df.rename(columns={"# of words/chapter": "# of words/book"})

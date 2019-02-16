@@ -80,7 +80,7 @@ def count_num_of_words(soup):
     Returns
     -------
     int
-        an integer that represents number of words for a given chapter
+        represents number of words for a given chapter
     '''
 
     verses = soup.find_all('p')

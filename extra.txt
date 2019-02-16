@@ -10,3 +10,5 @@ If you read 1 hr/day, then you can read the entire Holy Bible at least 5 times/y
 If you read 30 mins/day, then you can read the entire Holy Bible at least 3 times/yr
 If you read 90 mins/day, then you can read the entire Holy Bible at least 8 times/yr
 If you read 2 hrs/day, then you can read the entire Holy Bible at least 11 times/yr
+
+Total number of words in the Holy Bible = 810535

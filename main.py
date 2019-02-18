@@ -174,8 +174,9 @@ def write_to_file(df):
     df.to_csv("bible.csv", index=False) 
     new_df = df.groupby(df['Book'], sort=False)['# of words/chapter', 'Approx. reading time (mins)'].sum()
     new_df = new_df.rename(columns={"# of words/chapter": "# of words/book"})
+    new_df['Approx. reading time (hrs)'] = round(new_df['Approx. reading time (mins)'] / 60, 2)
     new_df.to_csv("bible_books.csv", index=False)
-
+    
 
 bible = read_in_bible_file()
 num_of_words, approx_reading_time = loop_through_chapters_of_the(bible)

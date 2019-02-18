@@ -168,7 +168,7 @@ def write_to_file(df):
     Writes several files
     1. bible.csv file holds all data
     2. bible_books.csv combines the data from each book which
-       results in a 66 row 2 column csv file 
+       results in a 66 row 4 column csv file 
     '''
 
     df.to_csv("bible.csv", index=False) 

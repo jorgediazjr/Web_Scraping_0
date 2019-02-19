@@ -8,7 +8,7 @@ def read_in_bible_file():
     Bible book names and the chapter count per book
     in a dictionary where the book name is the key
     and the chapter count is the value
-    
+
     Returns
     -------
     dictionary
@@ -24,9 +24,9 @@ def read_in_bible_file():
             # else if there is more than one book e.g. 1 Kings
             # or if the name of the book is long e.g. The Song of Solomon
             if len(temp_line) == 2:
-                bible_dict[temp_line[0]] = int(temp_line[-1].replace('\n',''))
+                bible_dict[temp_line[0]] = int(temp_line[-1].replace('\n', ''))
             else:
-                bible_dict[' '.join(temp_line[0:-1])] = int(temp_line[-1].replace('\n',''))
+                bible_dict[' '.join(temp_line[0:-1])] = int(temp_line[-1].replace('\n', ''))
     return bible_dict
 
 def create_dataframe(bible, num_of_words, approx_reading_time):
@@ -57,8 +57,9 @@ def create_dataframe(bible, num_of_words, approx_reading_time):
         list_of_chapters.extend(chapters)
         temp_book = []
         chapters = []
-        
-    df = pd.DataFrame([list_of_books, list_of_chapters],  dtype=object).transpose()
+
+    df = pd.DataFrame([list_of_books, list_of_chapters],
+                       dtype=object).transpose()
     df.columns = ['Book', 'Chapter']
     df = df.fillna('')
     # the following 2 lines adds two more columns to the dataframe
@@ -74,7 +75,7 @@ def count_num_of_words(soup):
     Parameters
     ----------
     soup: BeautifulSoup object
-        holds html information about the page we requested to 
+        holds html information about the page we requested to
         extra text from
 
     Returns
@@ -83,11 +84,11 @@ def count_num_of_words(soup):
         represents number of words for a given chapter
     '''
 
-    verses = soup.find_all('p')
+    chapter = soup.find_all('p')
     # deleting last line because it doesn't relate to chapter
-    del verses[-1]
-    words = 0 
-    for verse in verses:
+    del chapter[-1]
+    words = 0
+    for verse in chapter:
         words += len(verse.get_text().split()) - 1
     return words
 
@@ -110,7 +111,7 @@ def estimate_reading_time(words):
     time_to_read = words / 200
     time_to_read = str(time_to_read)
     minutes = int(time_to_read[0: time_to_read.find(".")])
-    seconds = float(time_to_read[time_to_read.find("."):]) * 0.60 
+    seconds = float(time_to_read[time_to_read.find("."):]) * 0.60
     seconds = round(seconds, 2)
     # we round up if seconds is >= .30
     if seconds >= .30:
@@ -143,9 +144,10 @@ def loop_through_chapters_of_the(bible):
     approx_reading_time = list()
     for book in bible:
         for chapter in range(bible[book]):
-            if len(book.split()) > 1: # e.g. 1 Samuel
-                upd_book = book.replace(" ","-")
-                url = "https://www.kingjamesbibleonline.org/{}-Chapter-{}/".format(upd_book, chapter+1)
+            if len(book.split()) > 1:   # e.g. 1 Samuel 31
+                upd_book = book.replace(" ", "-")
+                url = "https://www.kingjamesbibleonline.org/{}-Chapter-{}/".format(
+                                                                    upd_book, chapter+1)
                 page = requests.get(url)
                 soup = BeautifulSoup(page.content, 'html.parser')
                 words = count_num_of_words(soup)
@@ -153,7 +155,8 @@ def loop_through_chapters_of_the(bible):
                 num_of_words.append(words)
                 approx_reading_time.append(reading_time)
             else:
-                url = "https://www.kingjamesbibleonline.org/{}-Chapter-{}/".format(book, chapter+1) 
+                url = "https://www.kingjamesbibleonline.org/{}-Chapter-{}/".format(
+                                                                    book, chapter+1) 
                 page = requests.get(url)
                 soup = BeautifulSoup(page.content, 'html.parser')
                 words = count_num_of_words(soup)
